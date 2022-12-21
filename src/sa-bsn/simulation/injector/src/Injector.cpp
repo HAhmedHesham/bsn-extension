@@ -53,6 +53,9 @@ double Injector::gen_noise(const std::string &component, double &noise, int &dur
     } else if (type=="random") {
         return ((double) rand() / (RAND_MAX)) * amplitude;
     } 
+    else if (type=="random1") {
+        return 1;
+    } 
     
     return 0.0;
 }
