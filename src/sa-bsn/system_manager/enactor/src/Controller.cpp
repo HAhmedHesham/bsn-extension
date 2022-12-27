@@ -103,7 +103,15 @@ void Controller::apply_reli_strategy(const std::string &component) {
                 std::cout << "Calculated frequency: " << new_freq << std::endl;
                 std::cout << "################################################" << std::endl;
             }*/
-        } else {
+        } else if(component == "/g3t1_6" && error>0.1){
+	       
+                    archlib::AdaptationCommand msg;
+                    msg.source = ros::this_node::getName();
+                    msg.target = component;
+                    msg.action = "off=";
+                    adapt.publish(msg);
+		
+	    } else {
             if(adaptation_parameter == "replicate_collect") {
                 replicate_task[component] += (error > 0) ? ceil(kp[component] * error) : floor(kp[component] * error);
                 if (replicate_task[component] < 1) replicate_task[component] = 1;
