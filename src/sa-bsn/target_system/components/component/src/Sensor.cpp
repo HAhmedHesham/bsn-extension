@@ -107,6 +107,9 @@ void Sensor::reconfigure(const archlib::AdaptationCommand::ConstPtr& msg) {
             int new_replicate_collect = stoi(param[1]);
             if(new_replicate_collect>1 && new_replicate_collect<200) replicate_collect = new_replicate_collect;
         }
+	    else if (param[0]=="off"){
+	    turnOff();
+	    }
     }
 }
 
