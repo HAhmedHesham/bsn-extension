@@ -108,7 +108,16 @@ void Sensor::reconfigure(const archlib::AdaptationCommand::ConstPtr& msg) {
             if(new_replicate_collect>1 && new_replicate_collect<200) replicate_collect = new_replicate_collect;
         }
 	    else if (param[0]=="off"){
-	    turnOff();
+	   if(stoi(param[1])>30 && onCycle+10<stoi(param[1]) && isComponentActive()){
+	   offCycle = stoi (param[1]);
+		   deactivate();
+	   }
+	    }
+	    else if (param[0]=="on"){
+	   if(offCycle+10<stoi(param[1]) && !isComponentActive()){
+	   onCycle = stoi(param[1]);
+		   activate();
+	   }
 	    }
     }
 }
