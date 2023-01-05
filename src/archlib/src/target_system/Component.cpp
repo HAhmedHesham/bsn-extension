@@ -149,14 +149,20 @@ namespace arch {
 			reconfigure(msg);
 		}
 
+		bool Component::isComponentActive(){
+		return status;
+		}
+		
 		void Component::activate() {
+			if(status==false){
 			sendEvent("activate");
 			status = true;
-		}
+		}}
 
         void Component::deactivate() {
+		if(status==true){
 			sendEvent("deactivate");
 			status = false;
-		}
+		}}
 	}
 }
