@@ -39,9 +39,11 @@ namespace arch {
 
                 virtual void reconfigure(const archlib::AdaptationCommand::ConstPtr& msg);
 
-            protected:
-                void activate();
+		void activate();
                 void deactivate();
+		bool isComponentActive();
+            protected:
+                
                 static void shutdownComponent();
 
                 ros::NodeHandle handle;
