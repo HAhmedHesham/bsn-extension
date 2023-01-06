@@ -160,7 +160,7 @@ namespace arch {
 		}}
 
         	void Component::deactivate() {
-		if(status==true){
+			if(status==true){
 			sendEvent("deactivate");
 			status = false;
 		}}
